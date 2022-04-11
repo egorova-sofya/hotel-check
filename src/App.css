@@ -30,3 +30,9 @@ input[type="radio"].visually-hidden {
   --green: #41522e;
   --yellow: #cdbc1e;
 }
+
+.is-invalid {
+  font-family: "Gotham Pro Bold", sans-serif;
+  font-weight: 700;
+  color: var(--red);
+}

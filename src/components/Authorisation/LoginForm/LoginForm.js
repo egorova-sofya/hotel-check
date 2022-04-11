@@ -1,10 +1,8 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
-
 import React, { useEffect } from "react";
 import s from "./LoginForm.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-// import SendingError from "../../Items/SendingError";
 import Button from "../../Button/Button";
 import * as yup from "yup";
 
@@ -46,42 +44,40 @@ const LoginForm = ({ title }) => {
             <Form>
               <div className={s.container}>
                 <div>
+                  <label for="login">Логин</label>
                   <Field
-                    label="First Name"
-                    id="name"
+                    id="login"
                     type="text"
-                    name="name"
+                    name="login"
                     className={`form-control ${
-                      touched.name && errors.name ? "is-invalid" : ""
+                      touched.login && errors.login ? "is-invalid" : ""
                     }`}
                   />
                   <ErrorMessage
                     component="div"
-                    name="name"
-                    className={`invalid-feedback `}
+                    name="login"
+                    className={`is-invalid `}
                   />
                 </div>
 
                 <div>
+                  <label for="password">Пароль</label>
+
                   <Field
                     label="First Name"
-                    id="name"
-                    type="text"
-                    name="name"
+                    id="password"
+                    type="password"
+                    name="password"
                     className={`form-control ${
-                      touched.name && errors.name ? "is-invalid" : ""
+                      touched.password && errors.password ? "is-invalid" : ""
                     }`}
                   />
                   <ErrorMessage
                     component="div"
-                    name="name"
+                    name="password"
                     className={`invalid-feedback `}
                   />
                 </div>
-
-                {/* {authReducer.authSendingErrorText?.length > 0 && (
-                  <Error>error</Error>
-                )} */}
                 <Button
                   type={"submit"}
                   appearence={"primary"}
