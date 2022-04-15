@@ -1,11 +1,13 @@
 export const GET_HOTELS = "GET_HOTELS";
 
 const UPDATE_LOCATION = "UPDATE_LOCATION",
-  UPDATE_DATE = "UPDATE_DATE";
+  UPDATE_DATE = "UPDATE_DATE",
+  SAVE_HOTELS = "SAVE_HOTELS";
 
 const defaultState = {
   location: "",
   checkIn: "",
+  hotelsArr: [],
 };
 
 export const getHotelsReducer = (state = defaultState, action) => {
@@ -20,6 +22,12 @@ export const getHotelsReducer = (state = defaultState, action) => {
       return {
         ...state,
         checkIn: action.payload,
+      };
+
+    case SAVE_HOTELS:
+      return {
+        ...state,
+        hotelsArr: action.payload,
       };
 
     default:
@@ -39,5 +47,10 @@ export const updateLocation = (payload) => ({
 
 export const updateDate = (payload) => ({
   type: UPDATE_DATE,
+  payload,
+});
+
+export const saveHotels = (payload) => ({
+  type: SAVE_HOTELS,
   payload,
 });

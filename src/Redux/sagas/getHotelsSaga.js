@@ -1,7 +1,7 @@
 import axios from "axios";
 import dayjs from "dayjs";
 import { takeEvery, call, put } from "redux-saga/effects";
-import { GET_HOTELS } from "../reducers/getHotelsReducer";
+import { GET_HOTELS, saveHotels } from "../reducers/getHotelsReducer";
 
 const getHotelApi = (location, checkIn, checkOut) => {
   return axios.get(
@@ -21,7 +21,8 @@ function* getHotelWorker({ payload }) {
       payload.checkIn,
       checkOut
     );
-    console.log(data);
+    console.log(data.data);
+    yield put(saveHotels(data.data));
   } catch (error) {
     console.log("error", error.response);
   }

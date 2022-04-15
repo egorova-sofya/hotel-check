@@ -1,5 +1,6 @@
 import React from "react";
 import FeaturedHotels from "../../components/FeaturedHotels/FeaturedHotels";
+import HotelsList from "../../components/HotelsList/HotelsList";
 import SearchHotels from "../../components/SearchHotels/SearchHotels";
 
 const HomePage = () => {
@@ -8,6 +9,7 @@ const HomePage = () => {
       <div>HomePage</div>
       <FeaturedHotels />
       <SearchHotels />
+      <HotelsList />
     </>
   );
 };
