@@ -1,0 +1,21 @@
+.container {
+  max-width: 1170px;
+  margin: 0 auto;
+  margin-bottom: 55px;
+  padding: 0 20px;
+}
+
+.modal {
+  margin: 0 auto;
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: flex-start;
+  gap: 1.5rem;
+  padding: 32px;
+  background-color: #fff;
+  max-width: 382;
+  height: 409px;
+  border-radius: 16px;
+}

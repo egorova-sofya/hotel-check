@@ -1,0 +1,49 @@
+.title {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+
+  font-style: normal;
+  color: var(--black);
+}
+
+.medium {
+  font-weight: 500;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.large {
+  font-size: 40px;
+  line-height: 80px;
+}
+
+.medium {
+  font-size: 24px;
+  line-height: 48px;
+}
+
+.small {
+  font-size: 20px;
+  line-height: 40px;
+}
+
+@media screen and (max-width: 768px) {
+  .large {
+    font-size: 30px;
+    line-height: 60px;
+  }
+
+  .medium {
+    font-size: 20px;
+    line-height: 40px;
+  }
+
+  .small {
+    font-size: 18px;
+    line-height: 36px;
+  }
+}

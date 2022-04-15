@@ -1,25 +1,27 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import React, { useEffect } from "react";
+import React from "react";
 import s from "./LoginForm.module.css";
-import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Button from "../../Button/Button";
 import * as yup from "yup";
+import Title from "../../Title/Title";
 
 const LoginForm = ({ title }) => {
-  const state = useSelector((state) => state);
-  const registrationInfoReducer = state.registrationInfoReducer;
-  const authReducer = state.authReducer;
-  const dispatch = useDispatch();
-
   const initialValues = {
     login: "",
     password: "",
   };
 
   const validationSchema = yup.object({
-    login: yup.string().email().required("Введите логин"),
-    password: yup.string().min(8).required("Введите пароль"),
+    login: yup
+      .string()
+      .email("Введите корректный Email")
+      .required("Введите email"),
+    password: yup
+      .string()
+      .min(8, "Пароль должен содержать минимум 8 знаков")
+      .required("Введите пароль")
+      .matches(/^[a-zA-Z0-9_]+$/, "Пароль не должен содержать кириллицу"),
   });
 
   const onSubmit = (values, onSubmitProps) => {
@@ -31,7 +33,7 @@ const LoginForm = ({ title }) => {
 
   return (
     <>
-      <h1>Simple Hotel Check</h1>
+      <Title>Simple Hotel Check</Title>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
@@ -39,7 +41,7 @@ const LoginForm = ({ title }) => {
         validateOnMount
         enableReinitialize
       >
-        {({ touched, errors, handleChange, values }) => {
+        {({ touched, errors }) => {
           return (
             <Form>
               <div className={s.container}>
