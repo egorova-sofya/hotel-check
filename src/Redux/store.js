@@ -1,13 +1,13 @@
 import createSagaMiddleware from "@redux-saga/core";
 import { applyMiddleware, combineReducers, createStore } from "redux";
-// import { rootWatcher } from "./sagas";
+import { rootWatcher } from "./sagas";
 import { composeWithDevTools } from "redux-devtools-extension";
-// import { ordersReducer } from "./reducers/ordersReducer";
+import { getHotelsReducer } from "./reducers/getHotelsReducer";
 
 const sagaMiddleware = createSagaMiddleware();
 
 const appReducer = combineReducers({
-  //   personalInfoReducer,
+  getHotelsReducer,
 });
 
 const rootReducer = (state, action) => {
@@ -19,4 +19,4 @@ export const store = createStore(
   composeWithDevTools(applyMiddleware(sagaMiddleware))
 );
 
-// sagaMiddleware.run(rootWatcher);
+sagaMiddleware.run(rootWatcher);

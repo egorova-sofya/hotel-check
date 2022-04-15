@@ -67,7 +67,6 @@ const LoginForm = () => {
                   <label for="password">Пароль</label>
 
                   <Field
-                    label="First Name"
                     id="password"
                     type="password"
                     name="password"
