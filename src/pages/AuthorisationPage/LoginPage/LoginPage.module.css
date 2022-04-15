@@ -12,7 +12,7 @@
   z-index: -9;
   opacity: 0.5;
   position: absolute;
-  background: url(./../../../assets/bg.jpg) no-repeat center center fixed;
+  background: url(./../../../assets/img/bg.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

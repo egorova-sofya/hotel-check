@@ -1,12 +1,14 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import React from "react";
 import s from "./LoginForm.module.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "../../Button/Button";
 import * as yup from "yup";
 import Title from "../../Title/Title";
 
-const LoginForm = ({ title }) => {
+const LoginForm = () => {
+  const navigate = useNavigate();
+
   const initialValues = {
     login: "",
     password: "",
@@ -25,10 +27,9 @@ const LoginForm = ({ title }) => {
   });
 
   const onSubmit = (values, onSubmitProps) => {
-    console.log("form data", values);
-    console.log("onSubmitProps", onSubmitProps);
     onSubmitProps.setSubmitting(false);
     onSubmitProps.resetForm();
+    navigate("/");
   };
 
   return (
