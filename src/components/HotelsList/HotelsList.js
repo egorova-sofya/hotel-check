@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { withBlockLayout } from "../../hoc/Layouts/BlockLayout/BlockLayout";
 import HotelItem from "../HotelItem/HotelItem";
+import ImageSlider from "../ImageSlider/ImageSlider";
 
 const HotelsList = () => {
   const state = useSelector((state) => state);
@@ -13,6 +14,7 @@ const HotelsList = () => {
 
   return (
     <>
+      <ImageSlider />
       {getHotelsReducer.hotelsArr <= 0 ? (
         <div>Результатов не найдено</div>
       ) : (
