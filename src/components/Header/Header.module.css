@@ -1,0 +1,28 @@
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--gray);
+  padding: 32px;
+}
+
+.exitButton {
+  cursor: pointer;
+  position: relative;
+  background-color: transparent;
+  border: none;
+  font-family: inherit;
+  font-size: 16px;
+  line-height: 20px;
+  color: var(--green);
+  margin-right: 33px;
+}
+
+.exitButton::after {
+  content: "";
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top: 11px;
+  right: -40px;
+  background-image: url(./../../assets/img/exit.svg);
+}

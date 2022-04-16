@@ -30,6 +30,7 @@ input[type="radio"].visually-hidden {
   --green: #41522e;
   --yellow: #cdbc1e;
   --black: #424242;
+  --gray: #e5e5e5;
 }
 
 .is-invalid {

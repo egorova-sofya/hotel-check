@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Button from "../../Button/Button";
 import * as yup from "yup";
 import Title from "../../Title/Title";
+import { setCookie } from "../../../utils/cookies";
 
 const LoginForm = () => {
   const navigate = useNavigate();
@@ -29,6 +30,7 @@ const LoginForm = () => {
   const onSubmit = (values, onSubmitProps) => {
     onSubmitProps.setSubmitting(false);
     onSubmitProps.resetForm();
+    setCookie("isAuthUser", true, 150);
     navigate("/");
   };
 
@@ -47,7 +49,7 @@ const LoginForm = () => {
             <Form>
               <div className={s.container}>
                 <div>
-                  <label for="login">Логин</label>
+                  <label htmlFor="login">Логин</label>
                   <Field
                     id="login"
                     type="text"
@@ -64,7 +66,7 @@ const LoginForm = () => {
                 </div>
 
                 <div>
-                  <label for="password">Пароль</label>
+                  <label htmlFor="password">Пароль</label>
 
                   <Field
                     id="password"
