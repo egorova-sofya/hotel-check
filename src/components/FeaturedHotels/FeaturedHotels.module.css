@@ -1,0 +1,9 @@
+.titleWrapper {
+  text-align: left;
+}
+
+.filterButtonsWrapper {
+  display: flex;
+  justify-content: flex-start;
+  gap: 8px;
+}

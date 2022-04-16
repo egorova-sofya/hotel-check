@@ -1,11 +1,4 @@
-.filled {
-  fill: var(--primary);
-}
-
-.star {
-  margin-right: 5px;
-}
-
-.editable {
-  cursor: pointer;
+.raitingWrapper {
+  display: flex;
+  gap: 3px;
 }

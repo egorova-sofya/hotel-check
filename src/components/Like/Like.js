@@ -3,7 +3,7 @@ import React, { useState } from "react";
 const Like = () => {
   const [like, setLike] = useState();
   return (
-    <div onClick={() => setLike(!like)}>
+    <div onClick={() => setLike(!like)} style={{ cursor: "pointer" }}>
       <svg
         width="23"
         height="20"

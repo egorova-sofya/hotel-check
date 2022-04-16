@@ -7,9 +7,9 @@ const Title = ({ children, size = "m", weight = "medium" }) => {
     <>
       <h1
         className={cn(s.title, {
-          [s.large]: size === "l",
-          [s.medium]: size === "m",
-          [s.small]: size === "s",
+          [s.l]: size === "l",
+          [s.m]: size === "m",
+          [s.s]: size === "s",
           [s.medium]: weight === "medium",
           [s.bold]: weight === "bold",
         })}

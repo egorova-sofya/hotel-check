@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { withBlockLayout } from "../../hoc/Layouts/BlockLayout/BlockLayout";
 import HotelItem from "../HotelItem/HotelItem";
 
 const HotelsList = () => {
@@ -7,7 +8,7 @@ const HotelsList = () => {
   const getHotelsReducer = state.getHotelsReducer;
 
   const hotelList = getHotelsReducer.hotelsArr.map((item) => {
-    return <HotelItem item={item} />;
+    return <HotelItem item={item} key={item.hotelId} />;
   });
 
   return (
@@ -21,4 +22,4 @@ const HotelsList = () => {
   );
 };
 
-export default HotelsList;
+export default withBlockLayout(HotelsList);

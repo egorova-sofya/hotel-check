@@ -1,0 +1,14 @@
+.filterButton {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  background-color: #fff;
+  border: 1px solid var(--gray);
+  border-radius: 4px;
+  padding: 0px 8px;
+}
+
+.activeButton {
+  border: 1px solid var(--green);
+}

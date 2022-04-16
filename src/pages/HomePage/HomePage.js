@@ -5,6 +5,7 @@ import Header from "../../components/Header/Header";
 import HotelsList from "../../components/HotelsList/HotelsList";
 import SearchHotels from "../../components/SearchHotels/SearchHotels";
 import { useAuth } from "../../hooks/useAuth";
+import s from "./HomePage.module.css";
 
 const HomePage = () => {
   const { isAuth } = useAuth();
@@ -19,9 +20,15 @@ const HomePage = () => {
   return (
     <>
       <Header />
-      <FeaturedHotels />
-      <SearchHotels />
-      <HotelsList />
+      <div className={s.wrapper}>
+        <main className={s.container}>
+          <SearchHotels />
+          <FeaturedHotels />
+          <div className={s.block}>
+            <HotelsList />
+          </div>
+        </main>
+      </div>
     </>
   );
 };
