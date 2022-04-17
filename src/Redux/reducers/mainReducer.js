@@ -1,4 +1,7 @@
+const UPDATE_ERROR = "UPDATE_ERROR";
+
 const defaultState = {
+  error: "",
   imagesArr: [
     {
       id: 1,
@@ -21,7 +24,17 @@ const defaultState = {
 
 export const mainReducer = (state = defaultState, action) => {
   switch (action.type) {
+    case UPDATE_ERROR:
+      return {
+        ...state,
+        error: action.payload,
+      };
     default:
       return state;
   }
 };
+
+export const updateError = (payload) => ({
+  type: UPDATE_ERROR,
+  payload,
+});

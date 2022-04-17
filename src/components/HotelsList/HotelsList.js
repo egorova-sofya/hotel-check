@@ -11,6 +11,7 @@ const HotelsList = () => {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
   const getHotelsReducer = state.getHotelsReducer;
+  const mainReducer = state.mainReducer;
 
   useEffect(() => {
     dispatch(
@@ -70,6 +71,8 @@ const HotelsList = () => {
       </p>
       {getHotelsReducer.editedArray.length <= 0 ? (
         <div>Результатов не найдено</div>
+      ) : mainReducer.error.length > 0 ? (
+        <div>{mainReducer.error}</div>
       ) : (
         <div className={`scrollStyle ${s.hotelListWrapper}`}>{hotelList}</div>
       )}
