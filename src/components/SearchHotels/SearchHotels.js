@@ -31,12 +31,10 @@ const SearchHotels = () => {
     getHotelsReducer.numberOfDays
   );
 
-  // const checkIn = getHotelsReducer.checkIn;
-
   const initialValues = {
-    location: getHotelsReducer.location,
-    checkIn: getHotelsReducer.checkIn,
-    numberOfDays: getHotelsReducer.numberOfDays,
+    location: location,
+    checkIn: checkIn,
+    numberOfDays: numberOfDays,
   };
 
   const validationSchema = yup.object({

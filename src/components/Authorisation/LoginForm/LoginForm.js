@@ -44,6 +44,8 @@ const LoginForm = () => {
         initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={onSubmit}
+        validateOnMount
+        enableReinitialize
       >
         {({ touched, errors, setErrors, handleChange }) => {
           return (
