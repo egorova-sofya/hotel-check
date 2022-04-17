@@ -23,7 +23,6 @@ function* getHotelWorker() {
       getHotelsReducer.checkIn,
       checkOut
     );
-    console.log(data.data);
     yield put(saveHotels(data.data));
   } catch (error) {
     console.log("error", error.response);

@@ -21,11 +21,7 @@ input[type="radio"].visually-hidden {
 
 :root {
   --primaryGradient: 104.34deg, #41522e -15.34%, #be8022 145.95%;
-  --activeGradient: linear-gradient(
-    0deg,
-    rgba(0, 0, 0, 0.2),
-    rgba(0, 0, 0, 0.2)
-  );
+  --activeGradient: 0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2);
   --red: #e55858;
   --green: #41522e;
   --yellow: #cdbc1e;
@@ -35,8 +31,12 @@ input[type="radio"].visually-hidden {
   --darkGray: #878787;
 }
 
-.is-invalid {
-  font-family: "Roboto", sans-serif;
-  font-weight: 700;
-  color: var(--red);
+.is-invalid,
+.is-invalid input,
+.is-invalid label {
+  color: #eb1717 !important;
+}
+
+.is-invalid div {
+  font-size: 12px;
 }

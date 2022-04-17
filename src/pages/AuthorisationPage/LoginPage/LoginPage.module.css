@@ -1,4 +1,6 @@
 .container {
+  display: flex;
+  justify-content: center;
   height: 100vh;
 
   min-width: 320px;
@@ -18,4 +20,8 @@
   -o-background-size: cover;
   background-size: cover;
   filter: blur(6px);
+}
+
+.loginWrapper {
+  width: 409px;
 }

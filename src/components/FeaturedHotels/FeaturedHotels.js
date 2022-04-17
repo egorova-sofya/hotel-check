@@ -32,9 +32,17 @@ const FeaturedHotels = () => {
           />
         </div>
       </div>
-      {getHotelsReducer.featuredHotelsArr.map((item) => {
-        return <HotelItem key={item.hotelId} item={item} />;
-      })}
+      <div className={s.hotelListWrapper}>
+        {getHotelsReducer.featuredHotelsArr.length <= 0 ? (
+          <div style={{ padding: "20px 0" }}>
+            В избранное пока ничего не добавлено
+          </div>
+        ) : (
+          getHotelsReducer.featuredHotelsArr.map((item) => {
+            return <HotelItem key={item.hotelId} item={item} />;
+          })
+        )}
+      </div>
     </>
   );
 };

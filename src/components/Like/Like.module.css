@@ -1,0 +1,19 @@
+.likeWrapper {
+  cursor: pointer;
+}
+
+.likeWrapper svg:hover {
+  fill: var(--gray);
+  stroke: #c4c4c4;
+}
+
+.likeWrapper svg {
+  fill: #fff;
+  stroke: #c4c4c4;
+}
+
+.active svg,
+.active svg:hover {
+  fill: var(--red);
+  stroke: var(--red);
+}

@@ -1,3 +1,12 @@
+.container {
+  max-width: 345px;
+  height: 176px;
+}
+.titleWrapper {
+  margin-bottom: 25px;
+  text-align: center;
+}
+
 .underFormLinks {
   margin-top: 1rem;
 }
@@ -10,4 +19,36 @@
   color: var(--darkGrey);
 
   text-decoration: none;
+}
+
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 7px;
+  margin-bottom: 24px;
+}
+
+.inputWrapper label {
+  color: var(--black);
+  font-family: inherit;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 19px;
+}
+
+.inputWrapper input {
+  color: var(--black);
+  font-family: inherit;
+  font-weight: 300;
+  font-size: 16px;
+  height: 50px;
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #c9cacc;
+  border-radius: 4px;
+}
+
+.buttonWrapper {
+  max-height: 50px;
 }

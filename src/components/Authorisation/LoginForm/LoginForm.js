@@ -6,6 +6,7 @@ import Button from "../../Button/Button";
 import * as yup from "yup";
 import Title from "../../Title/Title";
 import { setCookie } from "../../../utils/cookies";
+import { withModalLayout } from "../../../hoc/Layouts/ModalLayout/ModalLayout";
 
 const LoginForm = () => {
   const navigate = useNavigate();
@@ -36,73 +37,61 @@ const LoginForm = () => {
 
   return (
     <>
-      <Title>Simple Hotel Check</Title>
+      <div className={s.titleWrapper}>
+        <Title>Simple Hotel Check</Title>
+      </div>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={onSubmit}
-        validateOnMount
-        enableReinitialize
       >
-        {({ touched, errors }) => {
+        {({ touched, errors, setErrors, handleChange }) => {
           return (
             <Form>
               <div className={s.container}>
-                <div>
+                <div
+                  className={` ${s.inputWrapper} ${
+                    touched.login && errors.login ? "is-invalid" : ""
+                  }`}
+                >
                   <label htmlFor="login">Логин</label>
                   <Field
                     id="login"
                     type="text"
                     name="login"
-                    className={`form-control ${
-                      touched.login && errors.login ? "is-invalid" : ""
-                    }`}
+                    className={`form-control`}
                   />
-                  <ErrorMessage
-                    component="div"
-                    name="login"
-                    className={`is-invalid `}
-                  />
+
+                  <ErrorMessage component="div" name="login" />
                 </div>
 
-                <div>
+                <div
+                  className={` ${s.inputWrapper} ${
+                    touched.password && errors.password ? "is-invalid" : ""
+                  }`}
+                >
                   <label htmlFor="password">Пароль</label>
 
                   <Field
                     id="password"
                     type="password"
                     name="password"
-                    className={`form-control ${
-                      touched.password && errors.password ? "is-invalid" : ""
-                    }`}
+                    className={`form-control`}
                   />
-                  <ErrorMessage
-                    component="div"
-                    name="password"
-                    className={`invalid-feedback `}
-                  />
+                  <ErrorMessage component="div" name="password" />
                 </div>
-                <Button
-                  type={"submit"}
-                  appearence={"primary"}
-                  onClick={() => {
-                    // handleClick(email, pass);
-                  }}
-                >
-                  Войти
-                </Button>
+                <div className={s.buttonWrapper}>
+                  <Button type={"submit"} appearence={"primary"}>
+                    Войти
+                  </Button>
+                </div>
               </div>
             </Form>
           );
         }}
       </Formik>
-      <p className={s.underFormLinks}>
-        <Link className={s.link} to="/registration">
-          Зарегестрироваться
-        </Link>
-      </p>
     </>
   );
 };
 
-export default LoginForm;
+export default withModalLayout(LoginForm);

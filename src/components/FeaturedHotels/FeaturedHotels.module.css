@@ -1,9 +1,26 @@
 .titleWrapper {
   text-align: left;
+  margin-bottom: 32px;
 }
 
 .filterButtonsWrapper {
   display: flex;
   justify-content: flex-start;
   gap: 8px;
+}
+
+.hotelListWrapper {
+  height: 340px;
+  overflow-y: auto;
+  padding-right: 16px;
+}
+
+.hotelListWrapper::-webkit-scrollbar-thumb {
+  background-color: var(--green);
+  border-radius: 10px;
+}
+
+.hotelListWrapper::-webkit-scrollbar {
+  width: 2px;
+  background-color: #e7e7e7;
 }

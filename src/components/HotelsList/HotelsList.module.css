@@ -1,0 +1,102 @@
+.hotelListHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+  margin-bottom: 38px;
+}
+
+.hotelListBreadCrumbs {
+  font-family: inherit;
+  font-weight: 500px;
+  font-size: 32px;
+  line-height: 37px;
+  color: var(--black);
+}
+
+.breadCrumbsArrow {
+  position: relative;
+  padding-right: 48px;
+}
+
+.breadCrumbsArrow::after {
+  content: "";
+  position: absolute;
+  width: 9px;
+  height: 17px;
+  top: 11px;
+  left: 110px;
+  background-image: url(./../../assets/img/breadCrumbsArrow.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.hotelListDate {
+  font-family: inherit;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 28px;
+}
+
+.sliderWrapper {
+  margin-bottom: 28px;
+  color: var(--green);
+}
+
+.text,
+.boldText {
+  font-family: inherit;
+  font-weight: 300;
+  font-size: 17px;
+  color: var(--black);
+  margin-bottom: 12px;
+}
+
+.boldText {
+  font-weight: 500;
+}
+
+.hotelListWrapper {
+  height: 563px;
+  overflow-y: auto;
+  padding-right: 16px;
+}
+
+.hotelListWrapper::-webkit-scrollbar-thumb {
+  background-color: var(--green);
+  border-radius: 10px;
+}
+
+.hotelListWrapper::-webkit-scrollbar {
+  width: 2px;
+  background-color: #e7e7e7;
+}
+
+.homeIcon {
+  padding-left: 88px;
+  position: relative;
+}
+
+.homeIcon::before,
+.homeIcon::after {
+  content: "";
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  top: 21px;
+  left: 1px;
+}
+
+.homeIcon::before {
+  top: 19px;
+
+  background-image: url(./../../assets/img/house.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.homeIcon::after {
+  border-radius: 50%;
+  background-color: var(--green);
+  opacity: 0.05;
+}

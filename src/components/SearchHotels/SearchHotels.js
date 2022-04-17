@@ -1,5 +1,5 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import s from "./SearchHotels.module.css";
 import * as yup from "yup";
 import Button from "../Button/Button";
@@ -15,11 +15,9 @@ import { withBlockLayout } from "../../hoc/Layouts/BlockLayout/BlockLayout";
 
 const SearchHotels = () => {
   let today = dayjs().format("YYYY-MM-DD");
-
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
   const getHotelsReducer = state.getHotelsReducer;
-  const checkIn = getHotelsReducer.checkIn;
 
   useEffect(() => {
     dispatch(updateLocation("Москва"));
@@ -27,9 +25,17 @@ const SearchHotels = () => {
     dispatch(getHotels());
   }, []);
 
+  const [location, setLocation] = useState("Москва");
+  const [checkIn, setCheckIn] = useState(today);
+  const [numberOfDays, setNumberOfDays] = useState(
+    getHotelsReducer.numberOfDays
+  );
+
+  // const checkIn = getHotelsReducer.checkIn;
+
   const initialValues = {
     location: getHotelsReducer.location,
-    checkIn: checkIn,
+    checkIn: getHotelsReducer.checkIn,
     numberOfDays: getHotelsReducer.numberOfDays,
   };
 
@@ -39,6 +45,9 @@ const SearchHotels = () => {
   });
 
   const onSubmit = (values, onSubmitProps) => {
+    dispatch(updateLocation(location));
+    dispatch(updateDate(checkIn));
+    dispatch(updateNumberOfDays(numberOfDays));
     onSubmitProps.setSubmitting(false);
     dispatch(getHotels());
   };
@@ -57,22 +66,20 @@ const SearchHotels = () => {
             <Form>
               <div className={s.container}>
                 <div className={s.inputsWrapper}>
-                  <div className={s.inputWrapper}>
+                  <div
+                    className={` ${s.inputWrapper} ${
+                      touched.location && errors.location ? "is-invalid" : ""
+                    }`}
+                  >
                     <Field
                       id="location"
                       type="text"
                       name="location"
-                      className={`form-control ${
-                        touched.location && errors.location ? "is-invalid" : ""
-                      }`}
-                      value={getHotelsReducer.location}
-                      onChange={(e) => dispatch(updateLocation(e.target.value))}
+                      className={`form-control`}
+                      value={location}
+                      onChange={(e) => setLocation(e.target.value)}
                     />
-                    <ErrorMessage
-                      component="div"
-                      name="location"
-                      className={`is-invalid `}
-                    />
+                    <ErrorMessage component="div" name="location" />
                   </div>
 
                   <div className={s.inputWrapper}>
@@ -83,33 +90,31 @@ const SearchHotels = () => {
                       name="checkIn"
                       value={checkIn}
                       onChange={(e) => {
-                        dispatch(updateDate(e.target.value));
+                        setCheckIn(e.target.value);
                       }}
                     />
                   </div>
 
-                  <div className={s.inputWrapper}>
+                  <div
+                    className={` ${s.inputWrapper} ${
+                      touched.numberOfDays && errors.numberOfDays
+                        ? "is-invalid"
+                        : ""
+                    }`}
+                  >
                     <label className={s.label}>Количество дней</label>
 
                     <Field
                       id="numberOfDays"
                       type="number"
                       name="numberOfDays"
-                      className={`form-control ${
-                        touched.numberOfDays && errors.numberOfDays
-                          ? "is-invalid"
-                          : ""
-                      }`}
-                      value={getHotelsReducer.numberOfDays}
+                      className={`form-control`}
+                      value={numberOfDays}
                       onChange={(e) => {
-                        dispatch(updateNumberOfDays(e.target.value));
+                        setNumberOfDays(e.target.value);
                       }}
                     />
-                    <ErrorMessage
-                      component="div"
-                      name="numberOfDays"
-                      className={`invalid-feedback `}
-                    />
+                    <ErrorMessage component="div" name="numberOfDays" />
                   </div>
                 </div>
                 <div className={s.buttonWrapper}>

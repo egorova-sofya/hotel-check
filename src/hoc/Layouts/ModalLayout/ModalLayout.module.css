@@ -15,7 +15,6 @@
   gap: 1.5rem;
   padding: 32px;
   background-color: #fff;
-  max-width: 382;
-  height: 409px;
+  min-height: 410px;
   border-radius: 16px;
 }
