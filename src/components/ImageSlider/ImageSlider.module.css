@@ -7,6 +7,7 @@
 }
 
 .img {
+  user-select: none;
   width: 164px;
   height: 149px;
   box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.15);

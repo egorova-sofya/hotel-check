@@ -14,7 +14,12 @@ import {
 import { withBlockLayout } from "../../hoc/Layouts/BlockLayout/BlockLayout";
 
 const SearchHotels = () => {
+  // let today = dayjs().format("YYYY-MM-DD");
   let today = dayjs().format("YYYY-MM-DD");
+  // let today = dayjs().format("YYYY-DD-MM");
+  // let today = dayjs().format("DD-MM-YYYY");
+  console.log(today);
+  // DD-MM-YYYY
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
   const getHotelsReducer = state.getHotelsReducer;
@@ -23,6 +28,7 @@ const SearchHotels = () => {
   useEffect(() => {
     dispatch(updateLocation("Москва"));
     dispatch(updateDate(today));
+    dispatch(getHotels());
   }, []);
 
   const initialValues = {
@@ -38,7 +44,7 @@ const SearchHotels = () => {
 
   const onSubmit = (values, onSubmitProps) => {
     onSubmitProps.setSubmitting(false);
-    dispatch(getHotels(values));
+    dispatch(getHotels());
   };
 
   return (

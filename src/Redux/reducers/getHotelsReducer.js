@@ -8,7 +8,7 @@ const UPDATE_LOCATION = "UPDATE_LOCATION",
 const defaultState = {
   location: "",
   checkIn: "",
-  numberOfDays: "",
+  numberOfDays: "1",
   hotelsArr: [],
 };
 
@@ -43,9 +43,8 @@ export const getHotelsReducer = (state = defaultState, action) => {
   }
 };
 
-export const getHotels = (payload) => ({
+export const getHotels = () => ({
   type: GET_HOTELS,
-  payload,
 });
 
 export const updateLocation = (payload) => ({

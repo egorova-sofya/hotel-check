@@ -1,6 +1,6 @@
 import axios from "axios";
 import dayjs from "dayjs";
-import { takeEvery, call, put } from "redux-saga/effects";
+import { takeEvery, call, put, select } from "redux-saga/effects";
 import { GET_HOTELS, saveHotels } from "../reducers/getHotelsReducer";
 
 const getHotelApi = (location, checkIn, checkOut) => {
@@ -9,16 +9,18 @@ const getHotelApi = (location, checkIn, checkOut) => {
   );
 };
 
-function* getHotelWorker({ payload }) {
+function* getHotelWorker() {
+  const state = yield select();
+  const getHotelsReducer = state.getHotelsReducer;
   try {
-    let checkOut = dayjs(payload.checkIn)
-      .add(payload.numberOfDays, "day")
+    let checkOut = dayjs(getHotelsReducer.checkIn)
+      .add(getHotelsReducer.numberOfDays, "day")
       .format("YYYY-MM-DD");
 
     const data = yield call(
       getHotelApi,
-      payload.location,
-      payload.checkIn,
+      getHotelsReducer.location,
+      getHotelsReducer.checkIn,
       checkOut
     );
     console.log(data.data);
