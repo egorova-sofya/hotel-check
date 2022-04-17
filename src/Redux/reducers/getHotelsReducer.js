@@ -7,6 +7,8 @@ const UPDATE_LOCATION = "UPDATE_LOCATION",
   UPDATE_EDITED_HOTEL = "UPDATE_EDITED_HOTEL",
   UPDATE_FEATURED_HOTEL = "UPDATE_FEATURED_HOTEL";
 
+const SORT_ARRAY = "SORT_ARRAY";
+
 const defaultState = {
   location: "",
   checkIn: "",
@@ -66,10 +68,33 @@ export const getHotelsReducer = (state = defaultState, action) => {
             ),
       };
 
+    case SORT_ARRAY:
+      return {
+        ...state,
+        featuredHotelsArr:
+          action.method === "up"
+            ? state.featuredHotelsArr.sort((firstItem, secondItem) => {
+                return (
+                  secondItem[action.filterKey] - firstItem[action.filterKey]
+                );
+              })
+            : state.featuredHotelsArr.sort((firstItem, secondItem) => {
+                return (
+                  firstItem[action.filterKey] - secondItem[action.filterKey]
+                );
+              }),
+      };
+
     default:
       return state;
   }
 };
+
+export const sortHotels = (method, filterKey) => ({
+  type: SORT_ARRAY,
+  method,
+  filterKey,
+});
 
 export const updateEditedHotel = (hotelsArr, featuredHotelsArr) => ({
   type: UPDATE_EDITED_HOTEL,

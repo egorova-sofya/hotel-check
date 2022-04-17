@@ -9,7 +9,6 @@ const HotelsList = () => {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
   const getHotelsReducer = state.getHotelsReducer;
-  console.log("getHotelsReducer.editedArray", getHotelsReducer.editedArray);
 
   useEffect(() => {
     dispatch(

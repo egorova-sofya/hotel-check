@@ -10,6 +10,7 @@ const FeaturedHotels = () => {
   const [activeButton, setActiveButton] = useState("raiting");
   const state = useSelector((state) => state);
   const getHotelsReducer = state.getHotelsReducer;
+
   return (
     <>
       <div className={s.titleWrapper}>
@@ -19,12 +20,14 @@ const FeaturedHotels = () => {
         <div onClick={() => setActiveButton("raiting")}>
           <FilterComponent
             title="Рейтинг"
+            filterKey="stars"
             activeButton={activeButton === "raiting"}
           />
         </div>
         <div onClick={() => setActiveButton("price")}>
           <FilterComponent
             title="Цена"
+            filterKey="priceFrom"
             activeButton={activeButton === "price"}
           />
         </div>

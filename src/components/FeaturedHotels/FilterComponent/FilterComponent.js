@@ -1,10 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import s from "./FilterComponent.module.css";
 import cn from "classnames";
 import FilterButton from "./FilterButton";
+import { useDispatch, useSelector } from "react-redux";
+import { sortHotels } from "../../../Redux/reducers/getHotelsReducer";
 
-const FilterComponent = ({ title, initialArray, activeButton }) => {
+const FilterComponent = ({ title, activeButton, filterKey }) => {
   const [activeArrow, setActiveArrow] = useState("up");
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state);
+  const getHotelsReducer = state.getHotelsReducer;
+
+  useEffect(() => {
+    dispatch(sortHotels(activeArrow, filterKey));
+  }, [activeArrow, dispatch, filterKey, getHotelsReducer.featuredHotelsArr]);
 
   return (
     <>
