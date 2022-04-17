@@ -24,7 +24,7 @@ const HotelItem = ({ item }) => {
       <div className={s.wrapper}>
         <div className={s.hotelHeader}>
           <h3 className={s.hotelTitle}>{item.hotelName}</h3>
-          <Like />
+          <Like item={item} />
         </div>
 
         <p

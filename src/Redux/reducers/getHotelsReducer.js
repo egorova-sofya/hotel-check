@@ -3,13 +3,17 @@ export const GET_HOTELS = "GET_HOTELS";
 const UPDATE_LOCATION = "UPDATE_LOCATION",
   UPDATE_DATE = "UPDATE_DATE",
   SAVE_HOTELS = "SAVE_HOTELS",
-  UPDATE_NUMBERS_OF_DAYS = "UPDATE_NUMBERS_OF_DAYS";
+  UPDATE_NUMBERS_OF_DAYS = "UPDATE_NUMBERS_OF_DAYS",
+  UPDATE_EDITED_HOTEL = "UPDATE_EDITED_HOTEL",
+  UPDATE_FEATURED_HOTEL = "UPDATE_FEATURED_HOTEL";
 
 const defaultState = {
   location: "",
   checkIn: "",
   numberOfDays: "1",
   hotelsArr: [],
+  editedArray: [],
+  featuredHotelsArr: [],
 };
 
 export const getHotelsReducer = (state = defaultState, action) => {
@@ -38,10 +42,46 @@ export const getHotelsReducer = (state = defaultState, action) => {
         hotelsArr: action.payload,
       };
 
+    case UPDATE_EDITED_HOTEL:
+      return {
+        ...state,
+        editedArray: action.hotelsArr.map((item) => {
+          if (action.featuredHotelsArr.includes(item)) {
+            item.featured = true;
+            return item;
+          } else {
+            item.featured = false;
+            return item;
+          }
+        }),
+      };
+
+    case UPDATE_FEATURED_HOTEL:
+      return {
+        ...state,
+        featuredHotelsArr: action.isLiked
+          ? [...state.featuredHotelsArr, action.item]
+          : state.featuredHotelsArr.filter(
+              (item) => item.hotelId !== action.item.hotelId
+            ),
+      };
+
     default:
       return state;
   }
 };
+
+export const updateEditedHotel = (hotelsArr, featuredHotelsArr) => ({
+  type: UPDATE_EDITED_HOTEL,
+  hotelsArr,
+  featuredHotelsArr,
+});
+
+export const updateFeaturedHotel = (isLiked, item) => ({
+  type: UPDATE_FEATURED_HOTEL,
+  isLiked,
+  item,
+});
 
 export const getHotels = () => ({
   type: GET_HOTELS,

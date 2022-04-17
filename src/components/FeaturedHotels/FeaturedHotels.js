@@ -29,7 +29,7 @@ const FeaturedHotels = () => {
           />
         </div>
       </div>
-      {getHotelsReducer.hotelsArr.map((item) => {
+      {getHotelsReducer.featuredHotelsArr.map((item) => {
         return <HotelItem key={item.hotelId} item={item} />;
       })}
     </>
